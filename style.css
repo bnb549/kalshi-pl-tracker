@@ -1,0 +1,81 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0f1117;
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.container { max-width: 1200px; margin: 0 auto; }
+
+header { text-align: center; margin-bottom: 2rem; }
+header h1 { font-size: 2.2rem; font-weight: 700; color: #63b3ed; }
+.subtitle { color: #94a3b8; margin-top: .5rem; }
+
+.upload-section { display: flex; justify-content: center; margin-bottom: 2rem; }
+.upload-label {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; max-width: 500px;
+  border: 2px dashed #4a5568;
+  border-radius: 12px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  font-size: 1rem;
+  color: #a0aec0;
+}
+.upload-label:hover { border-color: #63b3ed; background: #1a202c; color: #63b3ed; }
+.upload-label input { display: none; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.stat-card {
+  background: #1a202c;
+  border-radius: 12px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  border: 1px solid #2d3748;
+}
+.stat-label { font-size: .78rem; color: #718096; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .4rem; }
+.stat-value { font-size: 1.5rem; font-weight: 700; color: #63b3ed; }
+.stat-value.positive { color: #68d391; }
+.stat-value.negative { color: #fc8181; }
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.chart-card {
+  background: #1a202c;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #2d3748;
+}
+.chart-card.full-width { grid-column: 1 / -1; }
+.chart-card h2 { font-size: 1rem; color: #a0aec0; margin-bottom: 1rem; }
+
+#table-section { margin-bottom: 2rem; }
+#table-section h2 { font-size: 1.2rem; margin-bottom: 1rem; color: #a0aec0; }
+.table-wrapper { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+th { background: #2d3748; color: #a0aec0; padding: .6rem .8rem; text-align: left; font-weight: 600; }
+td { padding: .55rem .8rem; border-bottom: 1px solid #2d3748; }
+tr:hover td { background: #1e2a3a; }
+.win { color: #68d391; font-weight: 600; }
+.loss { color: #fc8181; font-weight: 600; }
+.scalar { color: #fbd38d; font-weight: 600; }
+
+.hidden { display: none !important; }
+
+@media (max-width: 640px) {
+  .charts-grid { grid-template-columns: 1fr; }
+  .chart-card.full-width { grid-column: auto; }
+}

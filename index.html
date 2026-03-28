@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalshi P/L Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📈 Kalshi P/L Tracker</h1>
+      <p class="subtitle">Upload your Kalshi activity CSV to visualize your profit, losses, and fees.</p>
+    </header>
+
+    <div class="upload-section">
+      <label for="csvFile" class="upload-label">
+        <span>📂 Drop or click to upload Kalshi CSV</span>
+        <input type="file" id="csvFile" accept=".csv" />
+      </label>
+    </div>
+
+    <div id="stats" class="stats-grid hidden">
+      <div class="stat-card">
+        <div class="stat-label">Total Invested</div>
+        <div class="stat-value" id="totalInvested">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Payout</div>
+        <div class="stat-value" id="totalPayout">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Net P/L</div>
+        <div class="stat-value" id="netPnL">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Fees Paid</div>
+        <div class="stat-value" id="totalFees">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Win Rate</div>
+        <div class="stat-value" id="winRate">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Markets Settled</div>
+        <div class="stat-value" id="marketsSettled">—</div>
+      </div>
+    </div>
+
+    <div id="charts" class="charts-grid hidden">
+      <div class="chart-card full-width">
+        <h2>Cumulative Net P/L Over Time</h2>
+        <canvas id="cumulativePnLChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2>Net P/L per Trade</h2>
+        <canvas id="tradePnLChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2>Cumulative Fees Paid</h2>
+        <canvas id="feesChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2>Win / Loss Distribution</h2>
+        <canvas id="winLossChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2>Entry Price Distribution</h2>
+        <canvas id="priceDistChart"></canvas>
+      </div>
+    </div>
+
+    <div id="table-section" class="hidden">
+      <h2>Trade History</h2>
+      <div class="table-wrapper">
+        <table id="tradeTable">
+          <thead>
+            <tr>
+              <th>Market</th>
+              <th>Settled Date</th>
+              <th>Contracts</th>
+              <th>Avg Entry</th>
+              <th>Cost</th>
+              <th>Payout</th>
+              <th>Fees</th>
+              <th>Net P/L</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="tradeTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
